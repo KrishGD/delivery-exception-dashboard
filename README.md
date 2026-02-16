@@ -2,6 +2,10 @@
 Frontend-only Delivery Exception Management Dashboard using HTML, CSS, and JavaScript
 <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/19784cff-6d69-4b2e-9426-7776c23995b0" />
 
+Live Demo:
+
+
+
 📌 **Project Overview**
 
 The Delivery Exception Management Dashboard is a browser-based internal tool that enables structured recording and management of delivery-related issues such as:
