@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delivery Exception Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="app-header__content">
+      <h1>Delivery Exception Management</h1>
+      <p class="app-header__subtitle">
+        Internal operations dashboard for logging and resolving delivery issues
+      </p>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <!-- ===== FORM ===== -->
+    <section class="card form-section">
+      <h2>Report Delivery Exception</h2>
+      <p class="section-helper">Fields marked with * are required.</p>
+
+      <form id="exceptionForm" novalidate>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="deliveryId">Delivery ID *</label>
+            <input type="text" id="deliveryId" required placeholder="e.g. DEL-10293">
+          </div>
+
+          <div class="form-field">
+            <label for="customerName">Customer Name *</label>
+            <input type="text" id="customerName" required placeholder="Customer full name">
+          </div>
+
+          <div class="form-field">
+            <label for="issueType">Issue Type *</label>
+            <select id="issueType" required>
+              <option value="">Select Issue Type</option>
+              <option>Address Not Found</option>
+              <option>Customer Not Available</option>
+              <option>Payment Issue</option>
+              <option>Package Damaged</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <span class="field-label">Priority *</span>
+            <div class="priority">
+              <label><input type="radio" name="priority" value="Low"> Low</label>
+              <label><input type="radio" name="priority" value="Medium"> Medium</label>
+              <label><input type="radio" name="priority" value="High"> High</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" rows="3" placeholder="Add any additional context for the operations team"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Submit Issue</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===== DASHBOARD ===== -->
+    <section class="card dashboard-section">
+      <div class="dashboard-header">
+        <div class="dashboard-header__left">
+          <h2>Exceptions Dashboard</h2>
+        </div>
+        <div class="dashboard-header__metrics">
+          <div class="metric">
+            <span class="metric-label">Open Issues</span>
+            <span id="openCount" class="metric-value">0</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Resolved Issues</span>
+            <span id="resolvedCount" class="metric-value">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters">
+        <div class="filter-group">
+          <label for="filterIssue">Filter by Issue Type</label>
+          <select id="filterIssue">
+            <option value="All">All Issues</option>
+            <option>Address Not Found</option>
+            <option>Customer Not Available</option>
+            <option>Payment Issue</option>
+            <option>Package Damaged</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filterStatus">Filter by Status</label>
+          <select id="filterStatus">
+            <option value="All">All Status</option>
+            <option value="Open">Open</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-wrapper">
+        <table class="exceptions-table">
+          <thead>
+            <tr>
+              <th>Delivery ID</th>
+              <th>Customer Name</th>
+              <th>Issue Type</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
